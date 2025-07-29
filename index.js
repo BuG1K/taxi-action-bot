@@ -59,9 +59,9 @@ app.get('/send', async (req, res) => {
   const name = req.query.name;
   const lastName = req.query.last_name;
 
-  if (!phone || !users[phone]) {
-    return res.status(404).send('Номер не найден');
-  }
+  // if (!phone || !users[phone]) {
+  //   return res.status(404).send('Номер не найден');
+  // }
 
   let fullMessage = message;
   if (orderId) {
