@@ -54,13 +54,33 @@ bot.on('contact', (msg) => {
 app.get('/send', async (req, res) => {
   const phone = req.query.phone;
   const message = req.query.message || 'У вас новое сообщение!';
+  const orderId = req.query.order_id;
+  const number = req.query.number;
+  const name = req.query.name;
+  const lastName = req.query.last_name;
 
   if (!phone || !users[phone]) {
     return res.status(404).send('Номер не найден');
   }
 
+  let fullMessage = message;
+  if (orderId) {
+    fullMessage += `\nID заказа: ${orderId}`;
+  }
+  if (number) {
+    fullMessage += `\nНомер: ${number}`;
+  }
+  if (name) {
+    fullMessage += `\nИмя: ${name}`;
+  }
+  if (lastName) {
+    fullMessage += `\nФамилия: ${lastName}`;
+  }
+
+  console.log(`Отправка сообщения на номер ${phone}: ${fullMessage}`);
+
   const chatId = users[phone];
-  await bot.sendMessage(chatId, message);
+  await bot.sendMessage(chatId, fullMessage);
 
   res.send('Сообщение отправлено');
 });
