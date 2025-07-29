@@ -52,6 +52,7 @@ bot.on('contact', (msg) => {
 
 // 3. Обработка GET-запроса для отправки сообщения
 app.get('/send', async (req, res) => {
+  console.log(99999)
   const phone = req.query.phone;
   const message = req.query.message || 'У вас новое сообщение!';
   const orderId = req.query.order_id;
@@ -59,9 +60,9 @@ app.get('/send', async (req, res) => {
   const name = req.query.name;
   const lastName = req.query.last_name;
 
-  // if (!phone || !users[phone]) {
-  //   return res.status(404).send('Номер не найден');
-  // }
+  if (!phone || !users[phone]) {
+    return res.status(404).send('Номер не найден');
+  }
 
   let fullMessage = message;
   if (orderId) {
