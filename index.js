@@ -52,7 +52,7 @@ bot.on('contact', (msg) => {
 
 // 3. Обработка GET-запроса для отправки сообщения
 app.get('/send', async (req, res) => {
-  console.log(99999)
+  console.log(rereq.query.phone, 12)
   const phone = req.query.phone;
   const message = req.query.message || 'У вас новое сообщение!';
   const orderId = req.query.order_id;
