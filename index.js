@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 
-const TOKEN = '8301533100:AAGNNo_xOftn-qsS8hZY1wX7KUosgITpXa8';
+const TOKEN = '8488566838:AAGEinaovygPDlymr8lfgS02Tmh_zjE3kqI';
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 const app = express();
